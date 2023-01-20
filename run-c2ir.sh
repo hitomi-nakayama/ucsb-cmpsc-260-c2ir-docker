@@ -1,5 +1,7 @@
 #!/bin/bash
 
+C2IR_DOCKER_TAG="c2ir"
+
 # group files by directory so we can process them in one docker run
 declare -A directories
 for f in "$@" ; do
@@ -16,5 +18,5 @@ done
 for directory in "${!directories[@]}" ; do
     readarray -t files <<< "${directories[$directory]}"
 
-    docker run --rm -u $(id -u):$(id -g) -v "${directory}:/target" -w /target c2ir "${files[@]}"
+    docker run --rm -u $(id -u):$(id -g) -v "${directory}:/target" -w /target $C2IR_DOCKER_TAG "${files[@]}"
 done
