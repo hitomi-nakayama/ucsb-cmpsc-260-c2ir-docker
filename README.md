@@ -18,6 +18,9 @@ docker build -t c2ir .
 ./run-c2ir.sh my-file.c
 ```
 
+This script will automatically create a docker container, process the .c
+file, and output the result into the same directory as the .c file.
+
 Note: The `./run-c2ir.sh` script will mount `my-file.c`'s entire parent
 directory inside of the docker container. Do not run this on a file located
 inside of an important directory.
